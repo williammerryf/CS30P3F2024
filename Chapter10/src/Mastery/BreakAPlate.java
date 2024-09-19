@@ -48,6 +48,7 @@ public class BreakAPlate {
 	 */
 	private void initialize() {
 		
+		//Images
 		ImageIcon placeholder = new ImageIcon("C:\\Users\\27074009\\git\\CS30P3F2024\\Chapter10\\src\\plateImages\\placeholder.gif");
 		ImageIcon allBroken = new ImageIcon("C:\\Users\\27074009\\git\\CS30P3F2024\\Chapter10\\src\\plateImages\\plates_all_broken.gif");
 		ImageIcon twoBroken = new ImageIcon("C:\\Users\\27074009\\git\\CS30P3F2024\\Chapter10\\src\\plateImages\\plates_two_broken.gif");
@@ -56,24 +57,28 @@ public class BreakAPlate {
 		ImageIcon prize2 = new ImageIcon("C:\\Users\\27074009\\git\\CS30P3F2024\\Chapter10\\src\\plateImages\\tiger_plush.gif");
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 440);
+		frame.setBounds(100, 100, 309, 440);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		//Displays game name
 		JLabel lblNewLabel = new JLabel("BreakAPlate");
 		lblNewLabel.setBounds(10, 11, 109, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
+		//Displays image of plates
 		JLabel imgPlates = new JLabel("");
-		imgPlates.setBounds(10, 33, 414, 124);
+		imgPlates.setBounds(10, 25, 285, 124);
 		frame.getContentPane().add(imgPlates);
 		
+		//Displays prize won message
 		JTextArea disp = new JTextArea();
-		disp.setBounds(147, 221, 136, 22);
+		disp.setBounds(78, 174, 136, 23);
 		frame.getContentPane().add(disp);
 		
+		//Displays image of prize
 		JLabel imgPrize = new JLabel("");
-		imgPrize.setBounds(147, 254, 136, 124);
+		imgPrize.setBounds(88, 209, 136, 124);
 		frame.getContentPane().add(imgPrize);
 		
 		imgPlates.setIcon(plates);
@@ -89,15 +94,17 @@ public class BreakAPlate {
 				int num2 = r.nextInt(2);
 				int num3 = r.nextInt(2);
 				
+				//Conditional for winning
 				if(num1 == num2 && num2 == num3) 
 				{
 					
 					imgPlates.setIcon(allBroken);
 					imgPrize.setIcon(prize2);
 					disp.setText("You win: Tiger Plush!");
-					
+				
+				//Else statement for losing
 				} else {
-					
+				
 					imgPlates.setIcon(twoBroken);
 					imgPrize.setIcon(prize1);
 					disp.setText("You win: Sticker!");
@@ -106,7 +113,7 @@ public class BreakAPlate {
 				
 			}
 		});
-		btn.setBounds(172, 187, 89, 23);
+		btn.setBounds(102, 140, 89, 23);
 		frame.getContentPane().add(btn);
 		
 	}

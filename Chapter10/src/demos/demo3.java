@@ -128,7 +128,6 @@ public class demo3 {
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-			
 				String grade = " ";
 				String school = " ";
 				String fN = fnt.getText();
@@ -158,6 +157,7 @@ public class demo3 {
 					school = "Western";
 					img.setIcon(wes);
 				} else {
+					
 					school = "Pearson";
 					img.setIcon(pear);
 				}

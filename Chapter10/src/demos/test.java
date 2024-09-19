@@ -16,6 +16,9 @@ public class test {
 		System.out.print(num2);
 		System.out.print(num3);
 		
+		int num = r.nextInt(2);
+		System.out.print(num);
+		
 	}
 
 }

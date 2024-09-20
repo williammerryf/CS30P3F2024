@@ -26,7 +26,6 @@ public class Bank
 	{
 		
 		int accIndex;
-		//Account match;
 		
 		Account match = new Account(iD);
 		
@@ -41,7 +40,27 @@ public class Bank
 			
 			return(false);
 		}
-		
-		
+			
 	}
+	
+	public boolean accessAcc(String iD)
+	{
+		int accIndex;
+		Account acc, match;
+		match = new Account(iD);
+		
+		accIndex = accs.indexOf(match);
+		if (accIndex > -1)
+		{
+			
+			acc = (Account)accs.get(accIndex);
+			return(true);
+			
+		} else {
+			
+			return(false);
+			
+		}
+	}
+	
 }

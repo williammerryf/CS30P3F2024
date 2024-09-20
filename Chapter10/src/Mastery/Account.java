@@ -9,8 +9,10 @@ public class Account
 	public Account(String fN, String lN, double bal)
 	{
 		
-		double balance = bal;
+		balance = bal;
 		accID = fN.substring(0,1) + lN;
+		firstN = fN;
+		lastN = lN;
 		
 	}
 	
@@ -50,7 +52,7 @@ public class Account
 		if (balance >= with) 
 		{
 			balance -= with;
-			return(false);
+			return(true);
 			
 		} else {
 			

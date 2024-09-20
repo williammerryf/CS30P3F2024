@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
 
 public class LocalBank {
 
@@ -53,12 +54,12 @@ public class LocalBank {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 417, 312);
+		frame.setBounds(100, 100, 293, 397);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 381, 251);
+		panel.setBounds(10, 11, 257, 336);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -79,21 +80,9 @@ public class LocalBank {
 		addAccFN.setForeground(new Color(128, 128, 128));
 		addAccFN.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		addAccFN.setText("First name");
-		addAccFN.setBounds(10, 36, 125, 22);
+		addAccFN.setBounds(10, 44, 125, 22);
 		panel.add(addAccFN);
 		addAccFN.setColumns(10);
-		
-		JButton addAcc = new JButton("Submit");
-		addAcc.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				
-				
-				
-			}
-		});
-		addAcc.setBounds(280, 36, 89, 23);
-		panel.add(addAcc);
 		
 		addAccLN = new JTextField();
 		addAccLN.addMouseListener(new MouseAdapter() {
@@ -109,12 +98,8 @@ public class LocalBank {
 		addAccLN.setForeground(Color.GRAY);
 		addAccLN.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		addAccLN.setColumns(10);
-		addAccLN.setBounds(145, 36, 125, 22);
+		addAccLN.setBounds(10, 77, 125, 22);
 		panel.add(addAccLN);
-		
-		JLabel lblNewLabel = new JLabel("Add Account");
-		lblNewLabel.setBounds(10, 11, 156, 14);
-		panel.add(lblNewLabel);
 		
 		enterID = new JTextField();
 		enterID.addMouseListener(new MouseAdapter() {
@@ -128,17 +113,9 @@ public class LocalBank {
 		});
 		enterID.setForeground(new Color(128, 128, 128));
 		enterID.setText("Enter account ID");
-		enterID.setBounds(10, 98, 125, 20);
+		enterID.setBounds(10, 110, 125, 20);
 		panel.add(enterID);
 		enterID.setColumns(10);
-		
-		JLabel lblNewLabel_1 = new JLabel("Access Account");
-		lblNewLabel_1.setBounds(10, 73, 125, 14);
-		panel.add(lblNewLabel_1);
-		
-		JButton accessAcc = new JButton("Submit");
-		accessAcc.setBounds(145, 97, 89, 23);
-		panel.add(accessAcc);
 		
 		withdraw = new JTextField();
 		withdraw.addMouseListener(new MouseAdapter() {
@@ -152,7 +129,7 @@ public class LocalBank {
 		});
 		withdraw.setForeground(new Color(128, 128, 128));
 		withdraw.setText("Withdraw Amount");
-		withdraw.setBounds(10, 181, 125, 20);
+		withdraw.setBounds(10, 172, 125, 20);
 		panel.add(withdraw);
 		withdraw.setColumns(10);
 		
@@ -169,30 +146,91 @@ public class LocalBank {
 		deposit.setText("Deposit Amount");
 		deposit.setForeground(Color.GRAY);
 		deposit.setColumns(10);
-		deposit.setBounds(10, 212, 125, 20);
+		deposit.setBounds(10, 203, 125, 20);
 		panel.add(deposit);
 		
 		balance = new JTextField();
+		balance.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) 
+			{
+			
+				balance.setText("");
+			
+			}
+		});
 		balance.setText("Account Balance");
 		balance.setForeground(Color.GRAY);
 		balance.setColumns(10);
-		balance.setBounds(10, 150, 125, 20);
+		balance.setBounds(10, 141, 125, 20);
 		panel.add(balance);
 		
-		JButton submitWithdraw = new JButton("Submit");
-		submitWithdraw.setBounds(145, 180, 89, 23);
-		panel.add(submitWithdraw);
+		JLabel disp = new JLabel("test");
+		disp.setBounds(10, 274, 115, 51);
+		panel.add(disp);
 		
-		JButton submitDeposit = new JButton("Submit");
-		submitDeposit.setBounds(145, 211, 89, 23);
-		panel.add(submitDeposit);
+		JComboBox action = new JComboBox();
+		action.setModel(new DefaultComboBoxModel(new String[] {"Deposit", "Withdrawal", "Check Balance", "Add Account", "Remove Account"}));
+		action.setBounds(10, 11, 125, 22);
+		panel.add(action);
 		
-		JButton rmvAcc = new JButton("Remove Account");
-		rmvAcc.setBounds(244, 97, 125, 23);
-		panel.add(rmvAcc);
+		JLabel lNLabel = new JLabel("Last Name");
+		lNLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lNLabel.setBounds(145, 81, 72, 14);
+		panel.add(lNLabel);
 		
-		JLabel outputMsg = new JLabel("test");
-		outputMsg.setBounds(254, 181, 115, 51);
-		panel.add(outputMsg);
+		JLabel fNLabel = new JLabel("First Name");
+		fNLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		fNLabel.setBounds(145, 48, 72, 14);
+		panel.add(fNLabel);
+		
+		JLabel idLabel = new JLabel("ID");
+		idLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		idLabel.setBounds(145, 113, 46, 14);
+		panel.add(idLabel);
+		
+		JLabel balLabel = new JLabel("Balance");
+		balLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		balLabel.setBounds(145, 144, 46, 14);
+		panel.add(balLabel);
+		
+		JLabel withlabel = new JLabel("Withdraw");
+		withlabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		withlabel.setBounds(145, 175, 72, 14);
+		panel.add(withlabel);
+		
+		JLabel depLabel = new JLabel("Deposit");
+		depLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		depLabel.setBounds(145, 206, 46, 14);
+		panel.add(depLabel);
+		
+		JLabel lblNewLabel = new JLabel("Edit textboxes next");
+		lblNewLabel.setBounds(145, 0, 103, 22);
+		panel.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("to red labels");
+		lblNewLabel_1.setBounds(144, 15, 73, 14);
+		panel.add(lblNewLabel_1);
+		
+		JButton performAction = new JButton("Submit");
+		performAction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+				String fN, lN, iD;
+				double with, dep, bal;
+				
+				if(action.getSelectedItem().equals("Add Account"))
+				{
+					fN = addAccFN.getText();
+					lN = addAccLN.getText();
+					//easySave.addAcc(fN, lN, bal);// make bank class main and do bank code blah blah
+				}
+				
+			}
+		});
+		performAction.setBounds(10, 234, 125, 23);
+		panel.add(performAction);
+		
 	}
 }

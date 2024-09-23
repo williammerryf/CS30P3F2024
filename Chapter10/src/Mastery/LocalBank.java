@@ -15,6 +15,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
 
 public class LocalBank {
 
@@ -165,10 +167,6 @@ public class LocalBank {
 		balance.setBounds(10, 141, 125, 20);
 		panel.add(balance);
 		
-		JLabel disp = new JLabel("test");
-		disp.setBounds(10, 274, 115, 51);
-		panel.add(disp);
-		
 		JComboBox action = new JComboBox();
 		action.setModel(new DefaultComboBoxModel(new String[] {"Deposit", "Withdrawal", "Check Balance", "Add Account", "Remove Account"}));
 		action.setBounds(10, 11, 125, 22);
@@ -212,6 +210,12 @@ public class LocalBank {
 		lblNewLabel_1.setBounds(144, 15, 73, 14);
 		panel.add(lblNewLabel_1);
 		
+		JTextArea disp = new JTextArea();
+		disp.setBounds(10, 268, 238, 57);
+		panel.add(disp);
+		
+		Bank easySave = new Bank();
+		
 		JButton performAction = new JButton("Submit");
 		performAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -220,15 +224,34 @@ public class LocalBank {
 				String fN, lN, iD;
 				double with, dep, bal;
 				
+				fN = addAccFN.getText();
+				lN = addAccLN.getText();
+				iD = enterID.getText();
+				with = Double.parseDouble(withdraw.getText());
+				dep = Double.parseDouble(deposit.getText());
+				bal = Double.parseDouble(balance.getText());
+				
+				//fix error with parsing by putting them in corresponding conditional or set defualt value to 0
+				
 				if(action.getSelectedItem().equals("Add Account"))
 				{
-					fN = addAccFN.getText();
-					lN = addAccLN.getText();
-					//easySave.addAcc(fN, lN, bal);// make bank class main and do bank code blah blah
+
+					easySave.addAcc(fN, lN, bal);
+					disp.setText(easySave.addAcc(fN, lN, bal));
+
+				}
+				
+				else if(action.getSelectedItem().equals("Deposit")) 
+				{
+					
+					easySave.Transaction(1, iD, dep);
+					disp.setText(easySave.Transaction(1, iD, dep));
+					
 				}
 				
 			}
 		});
+		
 		performAction.setBounds(10, 234, 125, 23);
 		panel.add(performAction);
 		

@@ -1,18 +1,20 @@
 package Mastery;
 
+import java.text.NumberFormat;
+
 public class Account 
 {
 
 	private double balance;
-	private String firstN, lastN, accID;
+	private String accID;
+	private Customer cust;
 	
 	public Account(String fN, String lN, double bal)
 	{
 		
 		balance = bal;
 		accID = fN.substring(0,1) + lN;
-		firstN = fN;
-		lastN = lN;
+		cust = new Customer(fN, lN);
 		
 	}
 	
@@ -20,8 +22,7 @@ public class Account
 	{
 		
 		balance = 0;
-		firstN = "";
-		lastN = "";
+		cust = new Customer("","");
 		accID = iD;
 	}
 	
@@ -75,6 +76,16 @@ public class Account
 			
 		}
 		
+	}
+	
+	public String toString() {
+		String accountString;
+		NumberFormat money = NumberFormat.getCurrencyInstance();
+		
+		accountString = accID + "\n";
+		accountString += cust.toString();
+		accountString += "current balance is " + money.format(balance);
+		return(accountString);
 	}
 	
 }

@@ -14,36 +14,71 @@ public class Bank
 		
 	}
 
-	public void addAcc(String fN, String lN, double bal) 
+	public String addAcc(String fN, String lN, double bal) 
 	{
 		
 		Account newAcc = new Account(fN, lN, bal);
 		accs.add(newAcc);
 		
+		return("New Account created. The ID is " + newAcc.getID() + "\n" + " with a starting balance of $" + bal);
+		
 	}
 	
-	public boolean rmvAcc(String iD) 
+	public String rmvAcc(String iD) 
 	{
 		
 		int accIndex;
+		Account match;
 		
-		Account match = new Account(iD);
+		match = new Account(iD);
 		
 		accIndex = accs.indexOf(match);
 		if (accIndex > -1) 
 		{
 			
 			accs.remove(accIndex);
-			return(true);
+			
+			return("Account removed");
 			
 		} else {
 			
-			return(false);
+			return("Account does not exist");
 		}
 			
 	}
 	
-	public boolean accessAcc(String iD)
+	public String Transaction(int transCode, String iD, double amt) {
+		
+		int accIndex;
+		Account match, acc;
+				
+		match = new Account(iD);
+		accIndex = accs.indexOf(match);
+		if (accIndex > -1) {
+			
+			acc = (Account)accs.get(accIndex);
+			
+			if (transCode == 1) {
+				acc.deposit(amt);
+				accs.set(accIndex, acc);
+				return(acc.toString());
+			} else if (transCode == 2) {
+				acc.withdrawal(amt);
+				accs.set(accIndex, acc);
+				return(acc.toString());
+			}
+		
+		} else {
+			
+			return("Account does not exist");
+	
+		}
+		
+		return("");
+	}
+	
+	
+	public String accessAcc(String iD)
 	{
 		int accIndex;
 		Account acc, match;
@@ -54,11 +89,11 @@ public class Bank
 		{
 			
 			acc = (Account)accs.get(accIndex);
-			return(true);
+			return(acc.toString());
 			
 		} else {
 			
-			return(false);
+			return("Account does not exist");
 			
 		}
 	}

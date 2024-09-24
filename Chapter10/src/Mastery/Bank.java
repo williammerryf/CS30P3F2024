@@ -20,7 +20,7 @@ public class Bank
 		Account newAcc = new Account(fN, lN, bal);
 		accs.add(newAcc);
 		
-		return("New Account created. The ID is " + newAcc.getID() + "\n" + " with a starting balance of $" + bal);
+		return("New Account created. The ID is " + newAcc.getID() + "\n" + "with a starting balance of $" + bal);
 		
 	}
 	
@@ -59,13 +59,26 @@ public class Bank
 			acc = (Account)accs.get(accIndex);
 			
 			if (transCode == 1) {
-				acc.deposit(amt);
+				acc.deposit(amt/2);
 				accs.set(accIndex, acc);
-				return(acc.toString());
+				return("Deposit of $" + amt + ". Current balance is $" + acc.getBalance());
 			} else if (transCode == 2) {
 				acc.withdrawal(amt);
 				accs.set(accIndex, acc);
-				return(acc.toString());
+				if (acc.withdrawal(amt) == true) {
+					return("Withdrawal of $" + amt + ". Current balance is $" + acc.getBalance());
+				} else {
+					return("not enough money");
+				}
+			
+				
+				
+				//Withdrawal is messed up
+				
+				
+				
+				
+				
 			}
 		
 		} else {

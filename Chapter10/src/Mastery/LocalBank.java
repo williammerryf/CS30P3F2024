@@ -56,12 +56,12 @@ public class LocalBank {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 293, 397);
+		frame.setBounds(100, 100, 714, 397);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 257, 336);
+		panel.setBounds(10, 11, 678, 336);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -168,6 +168,7 @@ public class LocalBank {
 		panel.add(balance);
 		
 		JComboBox action = new JComboBox();
+
 		action.setModel(new DefaultComboBoxModel(new String[] {"Deposit", "Withdrawal", "Check Balance", "Add Account", "Remove Account"}));
 		action.setBounds(10, 11, 125, 22);
 		panel.add(action);
@@ -178,41 +179,113 @@ public class LocalBank {
 		panel.add(lNLabel);
 		
 		JLabel fNLabel = new JLabel("First Name");
+		fNLabel.setForeground(new Color(0, 0, 0));
 		fNLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		fNLabel.setBounds(145, 48, 72, 14);
 		panel.add(fNLabel);
 		
-		JLabel idLabel = new JLabel("ID");
-		idLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		idLabel.setBounds(145, 113, 46, 14);
-		panel.add(idLabel);
+		JLabel iDLabel = new JLabel("ID");
+		iDLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		iDLabel.setBounds(145, 113, 46, 14);
+		panel.add(iDLabel);
 		
 		JLabel balLabel = new JLabel("Balance");
 		balLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		balLabel.setBounds(145, 144, 46, 14);
 		panel.add(balLabel);
 		
-		JLabel withlabel = new JLabel("Withdraw");
-		withlabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		withlabel.setBounds(145, 175, 72, 14);
-		panel.add(withlabel);
+		JLabel withLabel = new JLabel("Withdraw");
+		withLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		withLabel.setBounds(145, 175, 72, 14);
+		panel.add(withLabel);
 		
 		JLabel depLabel = new JLabel("Deposit");
 		depLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		depLabel.setBounds(145, 206, 46, 14);
 		panel.add(depLabel);
 		
-		JLabel lblNewLabel = new JLabel("Edit textboxes next");
+		JLabel lblNewLabel = new JLabel("Edit textboxes next\r");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblNewLabel.setBounds(145, 0, 103, 22);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("to red labels");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblNewLabel_1.setBounds(144, 15, 73, 14);
 		panel.add(lblNewLabel_1);
 		
 		JTextArea disp = new JTextArea();
-		disp.setBounds(10, 268, 238, 57);
+		disp.setBounds(10, 268, 658, 57);
 		panel.add(disp);
+		
+		action.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if(action.getSelectedItem().equals("Add Account"))
+				{
+					fNLabel.setForeground(Color.red);
+					lNLabel.setForeground(Color.red);
+					balLabel.setForeground(Color.red);
+					
+					iDLabel.setForeground(Color.black);
+					depLabel.setForeground(Color.black);
+					withLabel.setForeground(Color.black);
+				}
+				
+				else if(action.getSelectedItem().equals("Remove Account"))
+				{
+					
+					iDLabel.setForeground(Color.red);
+					
+					fNLabel.setForeground(Color.black);
+					lNLabel.setForeground(Color.black);
+					balLabel.setForeground(Color.black);
+					depLabel.setForeground(Color.black);
+					withLabel.setForeground(Color.black);
+				}
+				
+				else if(action.getSelectedItem().equals("Deposit")) 
+				{
+					
+					iDLabel.setForeground(Color.red);
+					depLabel.setForeground(Color.red);
+					
+					fNLabel.setForeground(Color.black);
+					lNLabel.setForeground(Color.black);
+					balLabel.setForeground(Color.black);
+					withLabel.setForeground(Color.black);
+					
+				}
+				
+				else if(action.getSelectedItem().equals("Withdrawal"))
+				{
+					
+					iDLabel.setForeground(Color.red);
+					withLabel.setForeground(Color.red);
+					
+					fNLabel.setForeground(Color.black);
+					lNLabel.setForeground(Color.black);
+					balLabel.setForeground(Color.black);
+					depLabel.setForeground(Color.black);
+
+				}
+				
+				else if(action.getSelectedItem().equals("Check Balance"))
+				{
+					
+					iDLabel.setForeground(Color.red);
+					
+					fNLabel.setForeground(Color.black);
+					lNLabel.setForeground(Color.black);
+					balLabel.setForeground(Color.black);
+					withLabel.setForeground(Color.black);
+					depLabel.setForeground(Color.black);
+
+				}
+				
+			}
+		});
+		
 		
 		Bank easySave = new Bank();
 		
@@ -222,30 +295,51 @@ public class LocalBank {
 			{
 				
 				String fN, lN, iD;
-				double with, dep, bal;
+				double with, dep, bal = 0;
 				
 				fN = addAccFN.getText();
 				lN = addAccLN.getText();
 				iD = enterID.getText();
-				with = Double.parseDouble(withdraw.getText());
-				dep = Double.parseDouble(deposit.getText());
-				bal = Double.parseDouble(balance.getText());
-				
-				//fix error with parsing by putting them in corresponding conditional or set defualt value to 0
 				
 				if(action.getSelectedItem().equals("Add Account"))
 				{
 
+					bal = Double.parseDouble(balance.getText());
 					easySave.addAcc(fN, lN, bal);
 					disp.setText(easySave.addAcc(fN, lN, bal));
 
 				}
 				
+				else if(action.getSelectedItem().equals("Remove Account"))
+				{
+					
+					easySave.rmvAcc(iD);
+					disp.setText(easySave.rmvAcc(iD));
+					
+				}
+				
 				else if(action.getSelectedItem().equals("Deposit")) 
 				{
 					
+					dep = Double.parseDouble(deposit.getText());
 					easySave.Transaction(1, iD, dep);
 					disp.setText(easySave.Transaction(1, iD, dep));
+					
+				}
+				
+				else if(action.getSelectedItem().equals("Withdrawal"))
+				{
+					
+					with = Double.parseDouble(withdraw.getText());
+					easySave.Transaction(2, iD, with);
+					disp.setText(easySave.Transaction(2, iD, with));
+				}
+				
+				else 
+				{
+					
+					easySave.accessAcc(iD);
+					disp.setText(easySave.accessAcc(iD));
 					
 				}
 				

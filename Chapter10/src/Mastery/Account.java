@@ -44,12 +44,12 @@ public class Account
 	{
 		
 		balance += dep;
-		
+
 	}
 	
 	public boolean withdrawal(double with) 
 	{
-		
+
 		if (balance >= with) 
 		{
 			balance -= with;
@@ -57,7 +57,7 @@ public class Account
 			
 		} else {
 			
-			return(false);
+			return(false);//Withdrawal is messed up
 	
 		}	
 	}

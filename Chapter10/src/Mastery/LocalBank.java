@@ -306,7 +306,7 @@ public class LocalBank {
 
 					bal = Double.parseDouble(balance.getText());
 					easySave.addAcc(fN, lN, bal);
-					disp.setText(easySave.addAcc(fN, lN, bal));
+					disp.setText(easySave.addAcc(addAccFN.getText(), addAccLN.getText(), Double.parseDouble(balance.getText())));
 
 				}
 				
@@ -332,7 +332,7 @@ public class LocalBank {
 					
 					with = Double.parseDouble(withdraw.getText());
 					easySave.Transaction(2, iD, with);
-					disp.setText(easySave.Transaction(2, iD, with));
+					disp.setText(easySave.Transaction(2, enterID.getText(), Double.parseDouble(withdraw.getText())));
 				}
 				
 				else 

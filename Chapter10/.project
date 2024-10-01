@@ -14,4 +14,41 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/CRT/Chapter 10 CRT.pdf</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Downloads/Chapter%2010%20CRT.pdf</locationURI>
+		</link>
+		<link>
+			<name>src/Error_Logs/BreakAPlate - Error Log.pdf</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Downloads/BreakAPlate%20-%20Error%20Log.pdf</locationURI>
+		</link>
+		<link>
+			<name>src/Error_Logs/LocalBankGUI - Error Log.pdf</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Downloads/LocalBankGUI%20-%20Error%20Log.pdf</locationURI>
+		</link>
+		<link>
+			<name>src/Error_Logs/Metric Conversions Error Log.pdf</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Downloads/Metric%20Conversions%20Error%20Log.pdf</locationURI>
+		</link>
+		<link>
+			<name>src/Reflection_Logs/BreakAPlate Reflection Log.pdf</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Downloads/BreakAPlate%20Reflection%20Log.pdf</locationURI>
+		</link>
+		<link>
+			<name>src/Reflection_Logs/LocalBankGUI Reflection Log.pdf</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Downloads/LocalBankGUI%20Reflection%20Log.pdf</locationURI>
+		</link>
+		<link>
+			<name>src/Reflection_Logs/Metric Conversions Reflection Log.pdf</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Downloads/Metric%20Conversions%20Reflection%20Log.pdf</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

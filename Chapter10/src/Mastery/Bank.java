@@ -72,7 +72,6 @@ public class Bank
 	public String Transaction(int transCode, String iD, double amt) {
 		
 		int accIndex;
-		double ogBal;
 		Account match, acc;
 		
 		match = new Account(iD);
@@ -80,23 +79,16 @@ public class Bank
 		if (accIndex > -1) {
 			
 			acc = (Account)accs.get(accIndex);
-			ogBal = acc.getBalance();
 			
 			if (transCode == 1) {
-				acc.deposit(amt/2);
+				acc.deposit(amt);
 				accs.set(accIndex, acc);
-				//return(acc.toString());
-				return("Deposit of $" + amt + ". Current balance is $" + acc.getBalance());
-			} else if (transCode == 2) {
-				acc.withdrawal(amt/2);
-				accs.set(accIndex, acc);
-				//return(acc.toString());
-				if(ogBal == acc.getBalance()) {
-					return("Withdrawal Failure. Current balance is $" + acc.getBalance());
-				} else {
-					return("Withdrawal of $" + amt + ". Current balance is $" + acc.getBalance());
-				}
-				}
+				return("Deposit attempt of $" + amt + acc.toString());
+			} else if (transCode == 2) {	
+				acc.withdrawal(amt);
+				accs.set(accIndex,  acc);
+				return("Withdrawal attempt of $" + amt + acc.toString());
+			}
 		}
 		return("Account does not exist.");
 	}

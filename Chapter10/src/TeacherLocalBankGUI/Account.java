@@ -1,13 +1,14 @@
-package Mastery;
+package TeacherLocalBankGUI;
 
 import java.text.NumberFormat;
 
 public class Account 
 {
-
+	
 	private double balance;
-	private String accID;
 	private Customer cust;
+	private String acctID;
+		
 	
 	/**
 	 * constructor
@@ -15,85 +16,68 @@ public class Account
 	 * post: An account has been created. Balance and 
 	 * customer data has been initialized with parameters.
 	 */
-	
-	public Account(String fN, String lN, double bal)
-	{
-		
+	public Account(double bal, String fName, String lName) {
 		balance = bal;
-		cust = new Customer(fN, lN);
-		accID = fN.substring(0,1) + lN;
-		
+		cust = new Customer(fName, lName);
+		acctID = fName.substring(0,1) + lName;
 	}
 	
+
 	/**
 	 * constructor
 	 * pre: none
 	 * post: An empty account has been created with the specified account ID.
 	 */
-	
-	public Account(String iD)
-	{
-		
+	public Account(String ID) {
 		balance = 0;
 		cust = new Customer("", "");
-		accID = iD;
+		acctID = ID;
 	}
-	
+
+
 	/** 
 	 * Returns the account ID.
 	 * pre: none
 	 * post: The account ID has been returned.
 	 */
-	
-	public String getID() 
-	{
-		
-		return(accID);
-		
+	public String getID() {
+	 	return(acctID);
 	}
-	
+
+
 	/** 
 	 * Returns the current balance.
 	 * pre: none
 	 * post: The account balance has been returned.
 	 */
-	
-	public double getBalance() 
-	{
-		
-		return(balance);
-		
+	public double getBalance() {
+	 	return(balance);
 	}
-	
+
+
 	/** 
 	 * A deposit is made to the account.
 	 * pre: none
 	 * post: The balance has been increased by the amount of the deposit.
 	 */
-	
-	public void deposit(double dep) 
-	{
-		
-		balance += dep/2;
-
+	public void deposit(double amt) {
+	 	balance += amt;
 	}
+
 	
 	/** 
 	 * A withdrawal is made from the account if there is enough money.
 	 * pre: none
 	 * post: The balance has been decreased by the amount withdrawn.
 	 */
-	
-	public void withdrawal(double with) 
-	{
-		
-		if (with <= balance) {
-			balance -= with/2;
-
-		} else {
-	 		return;
+	public void withdrawal(double amt) {
+	 	if (amt <= balance) {
+	 		balance -= amt;
+	 	} else {
+	 		System.out.println("Not enough money in account.");
 	 	}
 	}
+	
 	
 	/** 
 	 * Returns a true when objects have matching account ids.
@@ -101,39 +85,31 @@ public class Account
 	 * post: true has been returned when the objects are equal,
 	 * false returned otherwise.
 	 */
-	
-	public boolean equals(Object acc) 
-	{
-		
-		Account testAcc = (Account)acc;
-		
-		if(accID.equals(testAcc.accID)) 
-		{
-			return(true);
-			
-		} else {
-			
-			return(false);
-			
-		}
-		
+	public boolean equals(Object acct) {
+		Account testAcct = (Account)acct;
+		if (acctID.equals(testAcct.acctID)) {
+				return(true);
+			} else {
+				return(false);
+			}
 	}
-	
+
+
 	/** 
 	 * Returns a String that represents the Account object.
 	 * pre: none
 	 * post: A string representing the Account object has 
 	 * been returned.
 	 */
-	
-	public String toString() {
+	public String toString() 
+	{
 		String accountString;
 		NumberFormat money = NumberFormat.getCurrencyInstance();
-		
-		accountString = " " + accID + " ";
+
+		accountString = acctID + " ";	//changed for Chapter 11 Exer 1
 		accountString += cust.toString();
-		accountString += " current balance is " + money.format(balance);
-		return(accountString);
+		accountString += "Current balance is " + money.format(balance);
+	 	return(accountString);
 	}
-	
+
 }

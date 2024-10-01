@@ -223,6 +223,9 @@ public class LocalBank {
 			{
 				if(action.getSelectedItem().equals("Add Account"))
 				{
+					
+					// Highlights required first name, last name, and balance text boxes in red
+					
 					fNLabel.setForeground(Color.red);
 					lNLabel.setForeground(Color.red);
 					balLabel.setForeground(Color.red);
@@ -234,6 +237,7 @@ public class LocalBank {
 				
 				else if(action.getSelectedItem().equals("Remove Account"))
 				{
+					// Highlights required ID text box in red
 					
 					iDLabel.setForeground(Color.red);
 					
@@ -246,6 +250,7 @@ public class LocalBank {
 				
 				else if(action.getSelectedItem().equals("Deposit")) 
 				{
+					// Highlights required ID and deposit text boxes in red
 					
 					iDLabel.setForeground(Color.red);
 					depLabel.setForeground(Color.red);
@@ -259,6 +264,7 @@ public class LocalBank {
 				
 				else if(action.getSelectedItem().equals("Withdrawal"))
 				{
+					// Highlights required ID and withdrawal text boxes in red
 					
 					iDLabel.setForeground(Color.red);
 					withLabel.setForeground(Color.red);
@@ -272,6 +278,7 @@ public class LocalBank {
 				
 				else if(action.getSelectedItem().equals("Check Balance"))
 				{
+					// Highlights required ID text box in red
 					
 					iDLabel.setForeground(Color.red);
 					
@@ -286,60 +293,53 @@ public class LocalBank {
 			}
 		});
 		
-		
 		Bank easySave = new Bank();
 		
 		JButton performAction = new JButton("Submit");
 		performAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				
-				String fN, lN, iD;
-				double with, dep, bal = 0;
-				
-				fN = addAccFN.getText();
-				lN = addAccLN.getText();
-				iD = enterID.getText();
-				
+				// Adding an account
 				if(action.getSelectedItem().equals("Add Account"))
 				{
 
-					bal = Double.parseDouble(balance.getText());
-					easySave.addAcc(fN, lN, bal);
+					easySave.addAcc(addAccFN.getText(), addAccLN.getText(), Double.parseDouble(balance.getText()));
 					disp.setText(easySave.addAcc(addAccFN.getText(), addAccLN.getText(), Double.parseDouble(balance.getText())));
 
 				}
 				
+				//Removing an account
 				else if(action.getSelectedItem().equals("Remove Account"))
 				{
 					
-					easySave.rmvAcc(iD);
-					disp.setText(easySave.rmvAcc(iD));
+					easySave.rmvAcc(enterID.getText());
+					disp.setText(easySave.rmvAcc(enterID.getText()));
 					
 				}
 				
+				// Making a deposit
 				else if(action.getSelectedItem().equals("Deposit")) 
 				{
-					
-					dep = Double.parseDouble(deposit.getText());
-					easySave.Transaction(1, iD, dep);
-					disp.setText(easySave.Transaction(1, iD, dep));
+
+					easySave.Transaction(1, enterID.getText(), Double.parseDouble(deposit.getText()));
+					disp.setText(easySave.Transaction(1, enterID.getText(), Double.parseDouble(deposit.getText())));
 					
 				}
 				
+				// Making a withdrawal
 				else if(action.getSelectedItem().equals("Withdrawal"))
 				{
 					
-					with = Double.parseDouble(withdraw.getText());
-					easySave.Transaction(2, iD, with);
+					easySave.Transaction(2, enterID.getText(), Double.parseDouble(withdraw.getText()));
 					disp.setText(easySave.Transaction(2, enterID.getText(), Double.parseDouble(withdraw.getText())));
 				}
 				
+				// Checking balance
 				else 
 				{
 					
-					easySave.accessAcc(iD);
-					disp.setText(easySave.accessAcc(iD));
+					easySave.accessAcc(enterID.getText());
+					disp.setText(easySave.accessAcc(enterID.getText()));
 					
 				}
 				

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class WordCount {
 
@@ -17,27 +18,30 @@ public class WordCount {
 		FileReader in;
 		BufferedReader readFile;
 		String lineText;
-		double avg;
-		String file = "";
-		int[] lengths = {};
-		char[] nonLetters = 
-			{ '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
-	           '-', '_', '=', '+', '{', '}', '[', ']', '|', '\\',
-	           ':', ';', '"', '\'', '<', '>', ',', '.', '?', '/',
-	           '`', '~', ' ', '\t', '\n', '\r' 
-	        };
+		double wordLength, avglength, numWords;
+		String[] alphabet = {"a", "b", "c", "d", "e", "f", "g",
+				"h", "i", "j", "k", "l", "m", "n", 
+				"o", "p", "q", "r", "s", "t",
+				"u", "v", "w", "x", "y", "z" };
+		ArrayList words = new ArrayList();
+		ArrayList text = new ArrayList();
+		
+		//USE ARRAY LIST
 		
 		//Create the file
 		File textFile = new File("../Chapter11/src/SkillBuilders/instructions.txt");
 
 		try
 		{
-			//Read and print the file as output to the user
+			//
 			in = new FileReader(textFile);
 			readFile = new BufferedReader(in);
+			
 			while ((lineText = readFile.readLine()) != null) 
 			{
-				file += lineText;
+
+				if(lineText.contains(alphabet))
+				
 			}
 			readFile.close();
 			in.close();
@@ -54,8 +58,19 @@ public class WordCount {
 			System.out.println("Problem reading File.");
     		System.err.println("IOException: " + e.getMessage());
 		}
+
+
+		//fileArray = file.split(char); //FIX SPLIT
 		
-		System.out.print(file);
+		
+		/*
+		for (int i = 0; i <= file.length(); i++)
+		{
+			if(charAt(i))
+		}
+		
+		*/
+		
 	}
 
 	

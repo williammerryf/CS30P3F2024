@@ -19,11 +19,11 @@ public class WordCount {
 		BufferedReader readFile;
 		String lineText;
 		double wordLength, avglength, numWords;
-		String[] alphabet = {"a", "b", "c", "d", "e", "f", "g",
-				"h", "i", "j", "k", "l", "m", "n", 
-				"o", "p", "q", "r", "s", "t",
-				"u", "v", "w", "x", "y", "z" };
-		ArrayList words = new ArrayList();
+		char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+		String word = "";
+		
+		ArrayList<String> words = new ArrayList<String>();
+		
 		ArrayList text = new ArrayList();
 		
 		//USE ARRAY LIST
@@ -40,7 +40,26 @@ public class WordCount {
 			while ((lineText = readFile.readLine()) != null) 
 			{
 
-				if(lineText.contains(alphabet))
+				for(int i = 0; i < 26 ; i++) 
+				{
+				
+					for(int y = 0; y < lineText.length(); y++)
+					{
+					
+						if (lineText.charAt(y)  (alphabet[i])) // char and string issue
+						{
+							word += lineText; // Its reading the whole line have to make it read only characters
+						}
+						else 
+						{
+							words.add(word);
+							word = "";
+						}
+						
+					}
+					
+					
+				}
 				
 			}
 			readFile.close();
@@ -60,16 +79,7 @@ public class WordCount {
 		}
 
 
-		//fileArray = file.split(char); //FIX SPLIT
-		
-		
-		/*
-		for (int i = 0; i <= file.length(); i++)
-		{
-			if(charAt(i))
-		}
-		
-		*/
+		System.out.println(words);
 		
 	}
 

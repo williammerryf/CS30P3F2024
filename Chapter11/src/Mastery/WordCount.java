@@ -17,10 +17,9 @@ public class WordCount {
 		//Declaration
 		FileReader in;
 		BufferedReader readFile;
-		String lineText;
 		double wordLength, avglength, numWords;
 		char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-		String word = "";
+		String line = "", word = "";
 		
 		ArrayList<String> words = new ArrayList<String>();
 		
@@ -29,41 +28,45 @@ public class WordCount {
 		//USE ARRAY LIST
 		
 		//Create the file
-		File textFile = new File("../Chapter11/src/SkillBuilders/instructions.txt");
+		File textFile = new File("../Chapter11/src/Mastery/findreplace.txt");
 
 		try
 		{
-			//
+			
 			in = new FileReader(textFile);
 			readFile = new BufferedReader(in);
 			
-			while ((lineText = readFile.readLine()) != null) 
+			while ((line = readFile.readLine()) != null) 
 			{
-
-				for(int i = 0; i < 26 ; i++) 
+				for(int i = 0; i < line.length(); i++)
 				{
-				
-					for(int y = 0; y < lineText.length(); y++)
-					{
 					
-						if (lineText.charAt(y)  (alphabet[i])) // char and string issue
+					for(char a : alphabet) {
+						
+						if(line.charAt(i) == a) 
 						{
-							word += lineText; // Its reading the whole line have to make it read only characters
+						
+							word += line.charAt(i);
+							System.out.println(word);
+							
 						}
-						else 
+						else
 						{
+							
 							words.add(word);
 							word = "";
+							
 						}
 						
 					}
 					
-					
 				}
 				
 			}
-			readFile.close();
-			in.close();
+		
+		
+		readFile.close();
+		in.close();
 			
 		//Catching errors	
 		}
@@ -79,7 +82,7 @@ public class WordCount {
 		}
 
 
-		System.out.println(words);
+		//System.out.println(words);
 		
 	}
 

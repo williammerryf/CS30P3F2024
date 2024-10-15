@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class WordCount {
 
@@ -17,16 +18,11 @@ public class WordCount {
 		//Declaration
 		FileReader in;
 		BufferedReader readFile;
-		double wordLength, avglength, numWords;
-		char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-		String line = "", word = "";
-		
-		ArrayList<String> words = new ArrayList<String>();
-		
-		ArrayList text = new ArrayList();
-		
-		//USE ARRAY LIST
-		
+		double wordLength = 0, avgLength = 0, numWords = 0;
+		String line = "", lines = "";
+
+		String nonChars = "['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '_', '=', '+', '[', '{', ']', '}', ';', ':', '\"', ',', '<', '.', '>', '/', '?', '|', '`', '~', '\n']";
+	
 		//Create the file
 		File textFile = new File("../Chapter11/src/Mastery/findreplace.txt");
 
@@ -38,33 +34,27 @@ public class WordCount {
 			
 			while ((line = readFile.readLine()) != null) 
 			{
-				for(int i = 0; i < line.length(); i++)
+			
+				lines += line;
+				lines = lines.replace('\n', ' ');
+				
+				String[] words = lines.split(nonChars);
+				
+				for (String s : words) 
 				{
+					System.out.println(s);
 					
-					for(char a : alphabet) {
-						
-						if(line.charAt(i) == a) 
-						{
-						
-							word += line.charAt(i);
-							System.out.println(word);
-							
-						}
-						else
-						{
-							
-							words.add(word);
-							word = "";
-							
-						}
-						
-					}
+					wordLength += s.length();
 					
 				}
 				
+				numWords = words.length;
+
 			}
-		
-		
+		avgLength = wordLength / numWords;
+			
+		System.out.println("The amount of words is: " + numWords);
+		System.out.println("The average length of the words is: " + wordLength / numWords);
 		readFile.close();
 		in.close();
 			
@@ -83,6 +73,9 @@ public class WordCount {
 
 
 		//System.out.println(words);
+		
+		
+		
 		
 	}
 

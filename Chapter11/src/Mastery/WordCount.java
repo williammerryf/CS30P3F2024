@@ -12,16 +12,14 @@ public class WordCount {
 
 	public static void main(String[] args) 
 	{
-	
-		// avgNumber of words and length of words
 		
 		//Declaration
 		FileReader in;
 		BufferedReader readFile;
-		double wordLength = 0, avgLength = 0, numWords = 0;
+		double wordLength = 0, numWords = 0;
 		String line = "", lines = "";
 
-		String nonChars = "['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '_', '=', '+', '[', '{', ']', '}', ';', ':', '\"', ',', '<', '.', '>', '/', '?', '|', '`', '~', '\n']";
+		String nonChars = "['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '_', '=', '+', '[', '{', ']', '}', ';', ':', '\"', ',', '<', '.', '>', '/', '?', '|', '`', '~', '\n', '%', ' ']";
 	
 		//Create the file
 		File textFile = new File("../Chapter11/src/Mastery/findreplace.txt");
@@ -34,29 +32,47 @@ public class WordCount {
 			
 			while ((line = readFile.readLine()) != null) 
 			{
-			
+				
 				lines += line;
-				lines = lines.replace('\n', ' ');
+				lines.replace('\n', ' ');
+				lines += " " + readFile.readLine();
 				
-				String[] words = lines.split(nonChars);
-				
-				for (String s : words) 
-				{
-					System.out.println(s);
-					
-					wordLength += s.length();
-					
-				}
-				
-				numWords = words.length;
-
 			}
-		avgLength = wordLength / numWords;
 			
-		System.out.println("The amount of words is: " + numWords);
-		System.out.println("The average length of the words is: " + wordLength / numWords);
-		readFile.close();
-		in.close();
+			lines = lines.replace("null", "");
+			
+			if(lines.contains("  ") == true)
+			{
+				for(int i = 0; i < lines.length() + 1; i++)
+				{
+					char line1 = lines.charAt(i);
+				    char line2 = lines.charAt(i + 1); 
+				    String both = line1 + line2;
+				    == "  ";
+				}
+			}
+			
+			
+			
+			
+			String[] words = lines.split(nonChars);
+			
+			for (String s : words) 
+			{
+						
+				System.out.print(s + " ");
+				
+				numWords += 1;
+				wordLength += s.length();
+					
+			}
+			
+			System.out.println("");
+			System.out.println("The amount of words is: " + numWords);
+			System.out.println("The average length of the words is: " + wordLength / numWords);
+			System.out.println(wordLength);
+			readFile.close();
+			in.close();
 			
 		//Catching errors	
 		}
@@ -71,14 +87,6 @@ public class WordCount {
     		System.err.println("IOException: " + e.getMessage());
 		}
 
-
-		//System.out.println(words);
-		
-		
-		
-		
 	}
 
-	
-	
 }

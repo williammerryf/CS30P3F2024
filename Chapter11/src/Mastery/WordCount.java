@@ -41,20 +41,6 @@ public class WordCount {
 			
 			lines = lines.replace("null", "");
 			
-			if(lines.contains("  ") == true)
-			{
-				for(int i = 0; i < lines.length() + 1; i++)
-				{
-					char line1 = lines.charAt(i);
-				    char line2 = lines.charAt(i + 1); 
-				    String both = line1 + line2;
-				    == "  ";
-				}
-			}
-			
-			
-			
-			
 			String[] words = lines.split(nonChars);
 			
 			for (String s : words) 
@@ -70,7 +56,6 @@ public class WordCount {
 			System.out.println("");
 			System.out.println("The amount of words is: " + numWords);
 			System.out.println("The average length of the words is: " + wordLength / numWords);
-			System.out.println(wordLength);
 			readFile.close();
 			in.close();
 			

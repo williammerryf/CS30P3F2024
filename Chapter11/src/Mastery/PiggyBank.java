@@ -1,6 +1,6 @@
 package Mastery;
 
-public class PiggyPOOPBank 
+public class PiggyBank 
 {
 
 	private double bal;
@@ -20,22 +20,22 @@ public class PiggyPOOPBank
 		bal += p * 0.01 + n * 0.05 + d * 0.1 + q * 0.25;
 	}
 	
-	public void Rmv(int p, int n, int d, int q)
+	public void Rmv(double amt)
 	{
 		
-		if (p * 0.01 + n * 0.05 + d * 0.1 + q * 0.25 > bal)
+		if (amt > bal)
 		{
 			return;
 		}
 		else
 		{
-			bal -= p * 0.01 + n * 0.05 + d * 0.1 + q * 0.25;
+			bal -= amt;
 		}
 	}
 	
-	public double getBal()
+	public String getBal()
 	{
-		return(bal);
+		System.out.println(bal);
 	}
 	
 }

@@ -10,12 +10,18 @@ public class MySavings {
 	public static void main(String[] args) 
 	{
 		//String fileName = "../Chapter11/src/Mastery/PiggyBank.txt";
-		BufferedReader readFile;
-		BufferedWriter writeFile;
-		int userChoice, amt;
-		
+		//BufferedReader readFile;
+		//BufferedWriter writeFile;
+		int userChoice = 9, amt;
+		String fileName = "..//Chapter11/src/Mastery/bank.txt";
 		Scanner input = new Scanner(System.in);
-
+		
+		PiggyBank account = new PiggyBank();
+		
+		//Read data from file and process
+		
+		File bankFile = new File(fileName);
+		
 		System.out.println("1. Show total in bank");
 		System.out.println("2. Add a penny");
 		System.out.println("3. Add a nickel");
@@ -23,45 +29,31 @@ public class MySavings {
 		System.out.println("5. Add a quarter");
 		System.out.println("Enter 0 to quit");
 		
-		System.out.println("Enter your choice: ");
-		userChoice = input.nextInt();
-
-		File bankFile = new File("bank.dat");
-		
-		//PiggyBank account = new PiggyBank();
-		
-		//Read data from file and process
 		try
 		{
 
 			FileOutputStream out = new FileOutputStream(bankFile);
-			ObjectOutputStream write = new ObjectOutputStream(out);
+			ObjectOutputStream writeAcc = new ObjectOutputStream(out);
 			
-			//Write objects to file
-			write.writeObject(new PiggyBank());
-
-			write.close();
-			out.close();
-			
-			FileInputStream in = new FileInputStream(bankFile);
-			ObjectInputStream read = new ObjectInputStream(in);
-			
-			//Read objects
-			
-			PiggyBank account = (PiggyBank)read.readObject();
-
-			read.close();
-			in.close();
-
 			while(userChoice != 0)
 			{
+				System.out.println("Enter your choice: ");
+				userChoice = input.nextInt();
 				
-				if (userChoice == 2)
+				if(userChoice == 1)
+				{
+					
+					System.out.println(account.toString());
+
+				}
+				
+				else if (userChoice == 2)
 				{
 					System.out.println("Enter amount of pennies: ");
 					amt = input.nextInt();
 					
 					account.Add(amt, 0, 0, 0);
+
 					
 				}
 				else if (userChoice == 3)
@@ -70,6 +62,7 @@ public class MySavings {
 					amt = input.nextInt();
 					
 					account.Add(0, amt, 0, 0);
+				
 					
 				}
 				else if (userChoice == 4)
@@ -78,20 +71,40 @@ public class MySavings {
 					amt = input.nextInt();
 					
 					account.Add(0, 0, amt, 0);
-					
+			
 				}
 				else if (userChoice == 5)
 				{
-					System.out.println("Enter amount of dimes: ");
+					System.out.println("Enter amount of quarters: ");
 					amt = input.nextInt();
 					
 					account.Add(0, 0, 0, amt);
 					
 				}
 				
-				
 			}
+			
+			
+			//Write objects to file
+			writeAcc.writeObject(account);
+			
+			writeAcc.close();
+			
+			System.out.println("Data written to file");
+			
+			//out.close();
+			
+			
+			//Read objects
+			FileInputStream in = new FileInputStream(bankFile);
+			ObjectInputStream readAcc = new ObjectInputStream(in);
+			
+			PiggyBank account2 = (PiggyBank)readAcc.readObject();
 
+			readAcc.close();
+			
+			System.out.println(account2.toString());
+			
 		}
 					
 		catch (FileNotFoundException e) 
@@ -110,11 +123,6 @@ public class MySavings {
 			System.err.println("IOException: " + e.getMessage());
 		}
 		
-
-		
-		
-		
-	
 	}
 
 }

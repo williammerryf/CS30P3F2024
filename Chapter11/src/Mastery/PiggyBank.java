@@ -1,6 +1,9 @@
 package Mastery;
 
-public class PiggyBank 
+import java.io.Serializable;
+import java.text.NumberFormat;
+
+public class PiggyBank implements Serializable 
 {
 
 	private double bal;
@@ -33,9 +36,13 @@ public class PiggyBank
 		}
 	}
 	
-	public String getBal()
+	public String toString()
 	{
-		System.out.println(bal);
+		String accountString;
+		NumberFormat money = NumberFormat.getCurrencyInstance();
+		
+		accountString = "Current balance is " + money.format(bal);
+		return(accountString);
 	}
 	
 }

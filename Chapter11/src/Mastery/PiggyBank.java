@@ -2,6 +2,7 @@ package Mastery;
 
 import java.io.Serializable;
 import java.text.NumberFormat;
+import java.lang.Math;
 
 public class PiggyBank implements Serializable 
 {
@@ -25,6 +26,7 @@ public class PiggyBank implements Serializable
 	
 	public void Rmv(double amt)
 	{
+		amt = Math.round(amt * 100) / 100;
 		
 		if (amt > bal)
 		{

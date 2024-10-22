@@ -1,3 +1,16 @@
+/*
+
+Program: FindAndReplace.java          Last Date of this Revision: October 22, 2024
+
+Purpose: 
+Find and replace a inputed word or phrase within a document determined by user
+
+Author: William Merryfield 
+School: CHHS
+Course: CSE2130 File Structures and Event Handling
+ 
+*/
+
 package Mastery;
 
 import java.io.*;
@@ -7,7 +20,7 @@ public class FindAndReplace {
 
 	public static void main(String[] args) throws IOException 
 	{
-		//Declaration	
+		// Declaration	
 		File textFile, modifiedTextFile;
 		Scanner input = new Scanner(System.in);
 		FileReader in;
@@ -16,17 +29,17 @@ public class FindAndReplace {
 		BufferedWriter writeFile;
 		String fileName, word, replacementWord, newFile = "", oldFile = "", line = "";
 				
-		//While loop until valid filename is selected 
+		// While loop until valid filename is selected 
 		while(true) 
 		{		
-			//Obtain file name from the user
+			// Obtain file name from the user
 			System.out.println("Please enter a file name: ");
 			fileName = input.nextLine();
 				
-			//Determine if file exists
+			// Determine if file exists
 			textFile = new File(fileName);
 				
-			//Selection statements
+			// Selection statements
 			if(textFile.exists()) 
 			{
 				
@@ -47,14 +60,15 @@ public class FindAndReplace {
 			}
 		
 		}
+		input.close();
 
-		//Reads old file, turns it into a string, then deletes it
+		// Reads old file, turns it into a string, then deletes it
 		try
 		{
 			in = new FileReader(textFile);
 			readFile = new BufferedReader(in);
 			
-			//Read file and Store contents into a string
+			// Read file and Store contents into a string
 			while((line = readFile.readLine()) != null)
 			{
 				
@@ -63,10 +77,10 @@ public class FindAndReplace {
 				
 			}
 			
-			//Replace the word within the string 
+			// Replace the word within the string 
 			newFile = oldFile.replaceAll(word, replacementWord);
 			System.out.print(newFile);
-			//Delete original file
+			// Delete original file
 			textFile.delete();
 			
 			readFile.close();
@@ -81,7 +95,7 @@ public class FindAndReplace {
 
 		}
 
-		//Create a new file to write the edited string into
+		// Create a new file to write the edited string into
 		modifiedTextFile = new File(fileName);
 
 		try
@@ -111,3 +125,45 @@ public class FindAndReplace {
 	}
 	
 }
+
+/*
+
+ORIGINAL ../Chapter11/src/Mastery/findreplace.txt FILE CONTENTS
+
+bob went on a walk
+he went to the park
+
+//TEST 1//
+
+Please enter a file name: 
+../Chapter11/src/Mastery/findreplace.txt
+Please enter a word to be replaced: 
+bob
+Please enter the replacement word: 
+Mr A
+Mr A went on a walk
+he went to the park
+Data written to file.
+
+//TEST 2//
+
+Please enter a file name: 
+/Chapter11/src/Mastery/findreplace.txt
+File doesn't exist. Try Again.
+Please enter a file name: 
+
+//TEST 3//
+
+Please enter a file name: 
+../Chapter11/src/Mastery/findreplace.txt
+Please enter a word to be replaced: 
+went on a walk
+Please enter the replacement word: 
+teaches cs
+Mr A teaches cs
+he went to the park
+Data written to file.
+
+*/
+
+

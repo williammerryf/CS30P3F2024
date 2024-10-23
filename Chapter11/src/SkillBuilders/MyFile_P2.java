@@ -52,6 +52,7 @@ public class MyFile_P2 {
 		{
 			System.out.println("File is kept and stays the same ");
 		}
+		input.close();
 	}
 
 }

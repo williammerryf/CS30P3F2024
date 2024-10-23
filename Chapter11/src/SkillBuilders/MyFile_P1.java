@@ -15,6 +15,7 @@ public class MyFile_P1 {
 		//Obtain file name from the user
 		System.out.println("Please enter a file name: ");
 		filename = input.nextLine();
+		input.close();
 		
 		//Determine if a file exists
 		textFile = new File(filename);

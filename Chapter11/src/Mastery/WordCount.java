@@ -1,3 +1,16 @@
+/*
+
+Program: WordCount.java          Last Date of this Revision: October 23, 2024
+
+Purpose: 
+Count the number of words and average length of words in source.txt file
+
+Author: William Merryfield 
+School: CHHS
+Course: CSE2130 File Structures and Event Handling
+ 
+*/
+
 package Mastery;
 
 import java.io.BufferedReader;
@@ -99,7 +112,17 @@ bob went to the mall he saw bill bill had a cat named c o l l e r
 The amount of words is: 19.0
 The average length of the words is: 2.47
 
+-----------------------------------------------
 
+source.txt file
+
+bob
+
+//TEST 2//
+
+bob 
+The amount of words is: 1.0
+The average length of the words is: 3
 
 
 */

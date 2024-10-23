@@ -46,6 +46,7 @@ public class Roster {
 			}
 			writeFile.close();
 			out.close();
+			input.close();
 			System.out.println("Data written to file.");
 		}
 		catch (IOException e) 

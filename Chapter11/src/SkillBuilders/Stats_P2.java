@@ -57,6 +57,7 @@ public class Stats_P2 {
 			}
 			writeFile.close();
 			out.close();
+			input.close();
 			System.out.println("Data written to file.");
 		}
 		catch (IOException e) 

@@ -1,7 +1,5 @@
 package SkillBuilders;
 
-import java.text.NumberFormat;
-
 public class StuName {
 
 	private String fName, lName;

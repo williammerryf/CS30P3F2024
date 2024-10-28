@@ -1,21 +1,21 @@
 package SkillBuilders;
 
-public class PuckP1 extends Disk
+public class Puck extends Disk implements Comparable
 {
 	private double weight;
 	private boolean standard, youth;
 	
-	public PuckP1(double t, double r, double w)
+	public Puck(double r, double t, double w)
 	{
 		super(t, r);
 		weight = w;
 		
-		if (4.5 >= weight && weight >= 4 == true)
+		if (4.5 >= weight && weight >= 4)
 		{
 			standard = false;
 			youth = true;
 		}
-		else if (5.5 >= weight && weight >= 5 == true)
+		else if (5.5 >= weight && weight >= 5)
 		{
 			standard = true;
 			youth = false;
@@ -35,11 +35,11 @@ public class PuckP1 extends Disk
 	public String getDivision() 
 	{
 		
-		if (standard == true && youth == false && 2 * super.getRadius() == 3 && super.getThickness() == 1)
+		if (standard && super.getRadius() == 1.5 && super.getThickness() == 1.0)
 		{
 			return("Standard puck.");
 		}
-		else if (standard == false && youth == true && 2 * super.getRadius() == 3 && super.getThickness() == 1)
+		else if (youth && super.getRadius() == 1.5 && super.getThickness() == 1.0)
 		{
 			return("Youth puck.");
 		}
@@ -52,7 +52,7 @@ public class PuckP1 extends Disk
 	
 	public boolean equals(Object p)
 	{
-		PuckP1 testObj = (PuckP1)p;
+		Puck testObj = (Puck)p;
 		
 		if (testObj.getThickness() == super.getThickness() && testObj.getRadius() == super.getRadius() && testObj.getWeight() == weight) 
 		{
@@ -61,6 +61,29 @@ public class PuckP1 extends Disk
 		else
 		{
 			return(false);
+		}
+	}
+	
+	/*
+	 * 
+	 * Puck part 2
+	 * 
+	 * */
+	public int compareTo(Object p)
+	{
+		Puck testObj = (Puck)p;
+		
+		if (weight == testObj.getWeight())
+		{
+			return(0);
+		}
+		else if (weight > testObj.getWeight())
+		{
+			return(1);
+		}
+		else
+		{
+			return(-1);
 		}
 	}
 	

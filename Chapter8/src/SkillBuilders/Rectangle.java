@@ -1,6 +1,11 @@
 package SkillBuilders;
 
-public class Rectangle implements Comparable
+interface ComparableArea
+{
+	public int compareToArea(Object r);
+}
+
+public class Rectangle implements Comparable, ComparableArea
 {
 	private double length, width, area, perimeter;
 	
@@ -45,27 +50,49 @@ public class Rectangle implements Comparable
 		return(perimeter);
 	}
 	
-	public boolean equals(Object r)
+	public int compareTo(Object r)
 	{
 		Rectangle testObj = (Rectangle)r;
 		
 		if (testObj.getLength() == length && testObj.getWidth() == width) 
 		{
-			return(true);
+			return(0);
 		}
 		else
 		{
-			return(false);
+			return(1);
 		}
 	}
+	
+	public int compareToArea(Object r)
+	{
+		Rectangle testObj = (Rectangle)r;
+		
+		area = length * width;
+		double testArea = testObj.getLength() * testObj.getWidth();
+		
+		if (area == testArea)
+		{
+			return(0);
+		}
+		else if (area > testArea)
+		{
+			return(1);
+		}
+		else
+		{
+			return(-1);
+		}
+	}
+	
 	
 	public String toString()
 	{
 		String rectString;
 		
-		rectString = "The rectangle is " + length + " units long and " + width + " units wide.";
+		rectString = "The rectangle is " + length + " units long and " + width + " units wide. The area is " + length * width + " units^2.";
 		
 		return(rectString);
 	}
-	
+
 }

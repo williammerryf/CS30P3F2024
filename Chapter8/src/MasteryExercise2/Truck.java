@@ -4,7 +4,7 @@ public class Truck extends Vehicle
 {
 
 	private String frame, passengerSpace;
-	private int bedSpace;
+	private int bedSpace; // Add towing capacity
 	
 	public Truck(String ma, String mo, String fT, int y, double fE, boolean o, int bS)
 	{

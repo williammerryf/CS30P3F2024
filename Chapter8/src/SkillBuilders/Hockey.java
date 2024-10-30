@@ -68,8 +68,7 @@ public class Hockey {
 		}
 		
 		System.out.println(puck);
-		System.out.println(puck3);
-		
+		System.out.println(puck3);		
 	}
 
 }

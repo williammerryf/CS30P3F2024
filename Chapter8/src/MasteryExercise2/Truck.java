@@ -3,24 +3,21 @@ package MasteryExercise2;
 public class Truck extends Vehicle
 {
 
-	private String frame, passengerSpace;
-	private int bedSpace; // Add towing capacity
+	private String color;
+	double towingCapacity;
 	
-	public Truck(String ma, String mo, String fT, int y, double fE, boolean o, int bS)
+	public Truck(double fEC, double fEH, int sC, double cV, String c, double tC)
 	{
-		super(ma, mo, fT, y, fE, o);
-		frame = "body-on-frame design for heavy lifting/hauling and operating under non-ideal conditions. Optimal for work. ";
-		bedSpace = bS;
-		passengerSpace = "2-6";
+		super(fEC, fEH, sC, cV);
+		color = c;
+		towingCapacity = tC;
 	}
 	
 	public String toString()
 	{
 		String truckString;
-		
-		truckString = super.toString() + "The car has a " + frame + '\n' +
-					"It has " + bedSpace + "m^3 space in the trunk and has a passenger capacity of " + passengerSpace + " people.";
-		
+	
+		truckString = super.toString() + '\n' + "The truck is " + color + " and has a towing capacity of " + towingCapacity + " kgs.";
 		return(truckString);
 	}
 	

@@ -3,24 +3,31 @@ package MasteryExercise2;
 public class Minivan extends Vehicle
 {
 
-	private String frame, passengerSpace;
-	private int space;
+	private String color;
+	boolean slidingDoors;
 	
-	public Minivan(String ma, String mo, String fT, int y, double fE, boolean o, int s)
+	public Minivan(double fEC, double fEH, int sC, double cV, String c, boolean sD)
 	{
-		super(ma, mo, fT, y, fE, o);
-		frame = "monocoque frame intended to maximize interior space making it perfect for travelling.";
-		space = s;
-		passengerSpace = "7-9";
+		super(fEC, fEH, sC, cV);
+		color = c;
+		slidingDoors = sD;
 	}
 	
 	public String toString()
 	{
-		String minivanString;
+		String minivanString, sD;
 		
-		minivanString = super.toString() + "The car has a " + frame + '\n' +
-					"It has " + space + "m^3 space in the trunk and has a passenger capacity of " + passengerSpace + " people.";
+		if(slidingDoors)
+		{
+			sD = " and has sliding doors.";
+		}
+		else
+		{
+			sD = " and doesn't have sliding doors.";
+		}
 		
+		minivanString = super.toString() + '\n' + "The minivan is " + color + sD;
+			
 		return(minivanString);
 	}
 	

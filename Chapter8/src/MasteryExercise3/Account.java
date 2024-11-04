@@ -95,6 +95,27 @@ public abstract class Account {
 		cust.changePostalCode(pC);
 	}
 	
+	public String getStreet()
+	{
+		return(cust.getStreet());
+	}
+	
+	public String getCity()
+	{
+		return(cust.getCity());
+	}
+	
+	public String getProvince()
+	{
+		return(cust.getProvince());
+	}
+	
+	public String getPostalCode()
+	{
+		return(cust.getPostalCode());
+	}
+	
+	
 	/** 
 	 * Returns a true when objects have matching account ids.
 	 * pre: none
@@ -110,6 +131,7 @@ public abstract class Account {
 			}
 	}
 
+	
 
 	/** 
 	 * Returns a String that represents the Account object.

@@ -7,6 +7,7 @@ package MasteryExercise3;
  * For personal accounts
  * Charges $2 if starting balance is below $100
  * Author: William Merryfield 
+ * 
  * School: CHHS
  * Course: Computer Science
  * Credit: CSE 3130 Object-Oriented Programming 2

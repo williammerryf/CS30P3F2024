@@ -1,4 +1,5 @@
 package MasteryExercise3;
+
 /*
 
 Program: Bank.java          Last Date of this Revision: November 4, 2024
@@ -13,9 +14,10 @@ Credit: CSE 3130 Object-Oriented Programming 2
  
 
 */
-///////// ADD NUMEBR FROMAT OR CURRENCY INSTANCE
+
 //Import section
 import java.util.Scanner;
+import java.text.NumberFormat;
 
 public class Bank {
 
@@ -26,6 +28,7 @@ public class Bank {
 		double bal, amt;
 		String action, fN, lN, street, city, prov, postalCode;
 		int accType;
+		NumberFormat money = NumberFormat.getCurrencyInstance();
 		Scanner input = new Scanner(System.in);
 
 		//Gather data from user for Account class
@@ -81,7 +84,7 @@ public class Bank {
 			}
 			
 			//User menu
-			System.out.println("Current balance is $" + account.getBalance());
+			System.out.println("Current balance is " + money.format(account.getBalance()));
 			System.out.println("(D)eposit" + '\n' + 
 							   "(W)ithdrawal" + '\n' + 
 							   "(A)ddress change" + '\n' + 
@@ -170,10 +173,185 @@ public class Bank {
 
 Test Cases
 
-Test Case 1
+//Test Case 1//
 
+Balance: 
+100
+Firstname: 
+william
+Lastname: 
+merryfield
+Street:  
+street
+City:  
+calgary
+Province:  
+alberta
+Postal Code:  
+123abc
+A personal account can be made charge free.
+$10.00 will be charged if a business acount is made.
+Open a personal account: 1
+Open a business account: 2
+2
+Current balance is $90.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+d
+Enter deposit amount: 
+10.5
+Current balance is $100.50
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+w
+Enter withdrawal amount: 
+0.5
+Current balance is $100.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+a
+Enter 'same' to keep original address values.
+Street: 
+same
+City: 
+vancouver
+Province: 
+BC
+Postal Code: 
+456def
+Current balance is $100.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+v
+Business Account
+wmerryfield
+william merryfield
+Address: 
+street
+vancouver, BC, 456def
+Current balance is $100.00
+Current balance is $100.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+q
+Closing bank.
 
+//Test Case 2//
 
+Balance: 
+50
+Firstname: 
+bob
+Lastname: 
+sig
+Street:  
+street
+City:  
+vancouver
+Province:  
+BC
+Postal Code:  
+123456
+$2.00 will be charged if a personal acount is made.
+$10.00 will be charged if a business acount is made.
+Open a personal account: 1
+Open a business account: 2
+1
+Current balance is $48.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+w
+Enter withdrawal amount: 
+50
+Not enough money in account.
+Current balance is $48.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+w
+Enter withdrawal amount: 
+48
+Current balance is $0.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+d
+Enter deposit amount: 
+10000000000000000
+Current balance is $10,000,000,000,000,000.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+v
+Personal Account
+bsig
+bob sig
+Address: 
+street
+vancouver, BC, 123456
+Current balance is $10,000,000,000,000,000.00
+Current balance is $10,000,000,000,000,000.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+a
+Enter 'same' to keep original address values.
+Street: 
+same
+City: 
+calgary
+Province: 
+AB
+Postal Code: 
+postal
+Current balance is $10,000,000,000,000,000.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+v
+Personal Account
+bsig
+bob sig
+Address: 
+street
+calgary, AB, postal
+Current balance is $10,000,000,000,000,000.00
+Current balance is $10,000,000,000,000,000.00
+(D)eposit
+(W)ithdrawal
+(A)ddress change
+(V)iew account details
+(Q)uit
+q
+Closing bank.
 
  */
 	

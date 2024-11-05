@@ -6,6 +6,7 @@ package MasteryExercise3;
  * BusinessAcct class
  * For business accounts
  * Charges $10 if starting balance is below $500
+ * 
  * Author: William Merryfield 
  * School: CHHS
  * Course: Computer Science

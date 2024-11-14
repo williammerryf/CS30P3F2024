@@ -1,36 +1,38 @@
 package Queue2And3_SkillBuilders;
 
-public class Queue2 
+import java.util.ArrayList;
+
+public class Queue3 
 {
-	
-	private Object[] data;
-	private int front, rear, maxSize;
-	
-	public Queue2(int maxItems)
+	private ArrayList<Object>data;
+	private int front, rear;
+
+	public Queue3()
 	{
-		data = new Object[maxItems];
+		data = new ArrayList<Object>();
 		front = -1;
 		rear = -1;
-		maxSize = maxItems;
 	}
 	
 	public Object front()
 	{
-		return(data[front]);
+		return(data.get(front));
 	}
 	
 	public Object dequeue()
 	{
-		Object item;
-		item = data[front];
 		
+		Object item;
+		
+		item = data.get(front);
+		data.remove(front);
 		if (front == rear) 
 		{					
 			makeEmpty(); 
 		}
 		else
 		{
-			front = (front + 1) % maxSize;
+			rear -= 1;
 		}
 		
 		return(item);
@@ -42,12 +44,12 @@ public class Queue2
 		{
 			rear = 0;
 			front = 0;
-			data[rear] = item;
+			data.add(item);
 		}
 		else
 		{
-			rear = (rear + 1) % maxSize;
-			data[rear] = item;
+			rear += 1;
+			data.add(item);
 		}
 	}
 	
@@ -80,5 +82,6 @@ public class Queue2
 		front = -1;
 		rear = -1;
 	}
+	
 	
 }

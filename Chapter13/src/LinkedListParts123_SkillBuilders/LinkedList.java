@@ -41,20 +41,49 @@ public class LinkedList
 	}
 	
 	//Part 1
-	public void size(Node n)
+	
+	public int size()
 	{
 		int counter = 0;
 		
-		toString();
-		String[] words = toString().split('\n'); // fix copy from the file word count thing
-		while(n != null)
+		String[] words = toString().split("" + '\n');
+		
+		for (String s: words)
 		{
 			counter ++;
-			n = Node
 		}
+		
+		return(counter);
+		
 	}
 	
+	//Part 2
 	
+	public void addAtEnd(String str)
+	{
+		Node newNode = new Node(str);
+		Node current = head;
+		
+		while(current.getNext() != null)
+		{
+			current = current.getNext();
+		}
+		
+		current.setNext(newNode);
+		
+	}
+	
+	//Part 3
+	
+	public void makeEmpty()
+	{
+		String[] words = toString().split("" + '\n');
+		
+		for (String s: words)
+		{
+			remove(s);
+		}
+	}
 	
 	
 	

@@ -1,28 +1,24 @@
 package Mastery;
 
-import java.util.ArrayList;
-
 import LinkedListParts123_SkillBuilders.LinkedList;
 
 public class StackList 
 {
-	private LinkedList list;// = new LinkedList();
+	private LinkedList list;
 	private int top;
 	
 	public StackList()
 	{
 		
 		list = new LinkedList();
-		top = -1;
+		top = 0;
 		
 	}
 	
 	public Object top()
 	{
-		list.
 		
-		
-		
+		return(list.getEnd());
 		
 	}
 	
@@ -30,9 +26,23 @@ public class StackList
 	{
 		Object topItem;
 		
-		topItem = data.get(top);
-		data.remove(top);
+		topItem = list.getEnd();
+		list.remove(list.getEnd());
 		top --;
+		
+		if(list.size() <= 1) 
+		{
+			
+			topItem = list.getFront(); // make this method - DONE
+			list.remove(list.getFront());
+
+		}
+		else
+		{
+			topItem = list.getEnd();
+			list.remove(list.getEnd());
+		}
+		
 		return(topItem);
 	}
 	
@@ -40,7 +50,16 @@ public class StackList
 	{
 		String s = "" + item;
 		top ++;
-		list.addAtFront(s);
+		
+		if(list.size() <= 1) 
+		{
+			list.addAtFront(s);
+		}
+		else
+		{
+			list.addAtEnd(s);
+		}
+
 	}
 	
 	public boolean isEmpty()
@@ -58,7 +77,7 @@ public class StackList
 		
 	public int size()
 	{
-		return(list.size());
+		return(top);
 	
 	}
 	
@@ -66,4 +85,21 @@ public class StackList
 	{
 		list.makeEmpty();
 	}
+	
+	/*
+	public String toString()
+	{
+		String stackString = "";
+		LinkedList listCopy = list;
+		
+		for (int i = 0; i < listCopy.size(); i++) 
+			{
+			stackString += (listCopy.getEnd() + " ");   
+			listCopy.remove(listCopy.getEnd());
+			}
+		
+		return(stackString); 
+	}
+	*/
+	
 }

@@ -57,6 +57,30 @@ public class LinkedList
 		
 	}
 	
+	public String getEnd()
+	{
+		Node previous = head;
+		Node current = head;
+		current = current.getNext();
+		previous = current;
+		
+		while((current.getNext() != null))
+		{
+	
+			previous = current;
+			current = current.getNext();
+
+		}
+		
+		return current.getData();
+		
+	}
+	
+	public String getFront()
+	{
+        return head.getData();
+	}
+	
 	//Part 2
 	
 	public void addAtEnd(String str)
@@ -84,8 +108,6 @@ public class LinkedList
 			remove(s);
 		}
 	}
-	
-	
 	
 	public String toString()
 	{

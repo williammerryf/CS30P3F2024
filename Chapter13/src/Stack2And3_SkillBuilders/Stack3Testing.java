@@ -23,7 +23,6 @@ public class Stack3Testing {
 		stack.pop();
 		System.out.println("Top of stack: "+ stack.top() + "\n" 
 				 + "Items in stack: "+ stack.size());
-		
 	}
 
 }

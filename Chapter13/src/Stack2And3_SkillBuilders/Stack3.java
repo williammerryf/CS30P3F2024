@@ -67,4 +67,16 @@ public class Stack3
 		top = -1;
 	}
 	
+	public String toString()
+	{
+		String stackString = "";
+		
+		for (int i = 0; i < data.size(); i++) 
+			{
+			stackString += (data.get(i) + " ");   
+			}
+		
+		return(stackString); 
+	}
+	
 }

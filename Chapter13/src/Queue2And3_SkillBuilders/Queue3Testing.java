@@ -30,7 +30,7 @@ public class Queue3Testing {
 		
 		System.out.println("Size of queue: " + q.size());
 		System.out.println("Front of queue: " + q.front());
-				
+		
 	}
 
 }

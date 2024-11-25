@@ -79,9 +79,9 @@ public class Queue3
 	
 	public void makeEmpty()
 	{
+		data.removeAll(data);
 		front = -1;
 		rear = -1;
 	}
-	
 	
 }

@@ -5,10 +5,12 @@ import com.phidget22.*;
 
 public class Square {
 
+	public static int counter = 0;
+	
 	public static void main(String[] args) throws Exception 
 	{
 		
-		int counter = 0;
+		//int counter = 0;
 		
 		//Connect to wireless rover
         Net.addServer("", "192.168.100.1", 5661, "", 0);
@@ -55,8 +57,8 @@ public class Square {
         */
         
        // counter = 33;
-        
-        normDirection(leftMotors, rightMotors,sonar, counter);
+       normDirection(leftMotors, rightMotors, sonar, counter);
+  
         
         /*
         while (counter != 4) 
@@ -127,12 +129,45 @@ public class Square {
 
 	// make a reverse direction version and keep track of counter so it can back track an even amount in case object is infront of it
 	
-	private static int normDirection(DCMotor lM, DCMotor rM,DistanceSensor s, int c) throws Exception 
+	private static void normDirection(DCMotor lM, DCMotor rM,DistanceSensor s/*, int c instead of counter*/) throws Exception 
 	{
-        while(c != 33) // fix dist travelled toa  meter its a lill over
+        while(counter != 33) // fix dist travelled toa  meter its a lill over
         {
         	lM.setTargetVelocity(0.5);
             rM.setTargetVelocity(0.5);
+            counter++;
+            Thread.sleep(101);
+            if (s.getDistance() < 200)
+            {
+            	break;
+            }
+        }
+        
+        if(counter == 33)
+        {
+        	//Turn in one direction
+            lM.setTargetVelocity(-1);
+            rM.setTargetVelocity(1);
+
+            Thread.sleep(810); // 90 degree turn roughly
+            
+            lM.setTargetVelocity(0);
+            rM.setTargetVelocity(0);
+
+        }
+        
+        return;
+
+	}
+	
+	
+	// didnt test with counter variable here
+	private static int revDirection(DCMotor lM, DCMotor rM,DistanceSensor s, int c) throws Exception 
+	{
+		while(c != 33) // fix dist travelled toa  meter its a lill over
+        {
+        	lM.setTargetVelocity(-0.5);
+            rM.setTargetVelocity(-0.5);
         	c++;
             Thread.sleep(101);
             if (s.getDistance() < 200)
@@ -144,8 +179,8 @@ public class Square {
         if(c == 33)
         {
         	//Turn in one direction
-            lM.setTargetVelocity(-1);
-            rM.setTargetVelocity(1);
+            lM.setTargetVelocity(1);
+            rM.setTargetVelocity(-1);
 
             Thread.sleep(810); // 90 degree turn roughly
             
@@ -158,7 +193,11 @@ public class Square {
         {
         	return c;
         }
-        
+	}
+	
+	private int getCounter()
+	{
+		return(counter);
 	}
 	
 }

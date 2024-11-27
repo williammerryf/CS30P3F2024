@@ -26,7 +26,7 @@ public class LinearMovement {
         leftMotors.setTargetVelocity(.5);
         rightMotors.setTargetVelocity(.5);
 
-        //Wait for 1 second - Moves at velocity for this amount of time before switching to the next velocity
+        //Wait for 2 seconds - Moves at velocity for this amount of time before switching to the next velocity
         Thread.sleep(2000);
 
         //Stop motors

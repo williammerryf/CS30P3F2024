@@ -28,7 +28,7 @@ public class Turning {
         rightMotors.setTargetVelocity(-1);
 
         //Wait for 2 second
-        Thread.sleep(2000);
+        Thread.sleep(1140); // 180 degree turn roughly
 
         //Stop motors
         leftMotors.setTargetVelocity(0);

@@ -29,28 +29,44 @@ public class Square {
         sonar.open(5000);
         
         int x = 0;
-        
-        
+                
         //overrotates when more than 1 turn ex going to two sides of a square
         // prolly due to wheel accel
         // change turn or make it stop
+        //turnAround(leftMotors, rightMotors, sonar);
         
-        
-        while(x != 2)
+        while(x != 3)
         {     	
 
+        	oneSecStop(leftMotors, rightMotors);
+        	//turnAround(leftMotors, rightMotors, sonar);
+        	
         	if (turnCounter % 2 == 0)
         	{
         		normDirection(leftMotors, rightMotors, sonar);
-        		turnAround(leftMotors, rightMotors, sonar);
+        		
+        		if (!normDirection(leftMotors, rightMotors, sonar))
+        		{
+        			turnAround(leftMotors, rightMotors, sonar);
+        		}
+        		
+        		//oneSecStop(leftMotors, rightMotors);
+        		//turnAround(leftMotors, rightMotors, sonar);
         	}
         	else
         	{
         		revDirection(leftMotors, rightMotors, sonar);
-        		turnAround(leftMotors, rightMotors, sonar);
+        		
+        		if (!revDirection(leftMotors, rightMotors, sonar))
+        		{
+        			turnAround(leftMotors, rightMotors, sonar);
+        		}
+        		
+        		//oneSecStop(leftMotors, rightMotors);
+        		//turnAround(leftMotors, rightMotors, sonar);
         	}
         	
-        	oneSecStop(leftMotors, rightMotors);
+        	//oneSecStop(leftMotors, rightMotors);
        	
         	x++;
             
@@ -58,15 +74,15 @@ public class Square {
         }
 
 	 }
-
-	// make a reverse direction version and keep track of counter so it can back track an even amount in case object is infront of it
 	
-	private static void normDirection(DCMotor lM, DCMotor rM, DistanceSensor s) throws Exception 
+	private static boolean normDirection(DCMotor lM, DCMotor rM, DistanceSensor s) throws Exception 
 	{
+		boolean completion = false;
+		
         while(counter != 23) // abt a meter
         {
-        	lM.setTargetVelocity(0.5);
-            rM.setTargetVelocity(0.5);
+        	lM.setTargetVelocity(0.6);
+            rM.setTargetVelocity(0.6);
             counter++;
             Thread.sleep(100);
             
@@ -79,16 +95,12 @@ public class Square {
         if(counter == 23)
         {
         	//Turn in one direction
-            lM.setTargetVelocity(-0.8);
-            rM.setTargetVelocity(1);
+            lM.setTargetVelocity(-1);
+            rM.setTargetVelocity(0.9);
 
             Thread.sleep(810); // 90 degree turn roughly
-            /*
-            lM.setTargetVelocity(0);
-            rM.setTargetVelocity(0);
-            Thread.sleep(1000);
-            */
             counter = 0;
+            completion = true;
 
         }
 
@@ -96,16 +108,18 @@ public class Square {
         rM.setTargetVelocity(0);
         Thread.sleep(1000);
         
-        return;
+        return completion;
 
 	}
 	
-	private static void revDirection(DCMotor lM, DCMotor rM, DistanceSensor s) throws Exception 
+	private static boolean revDirection(DCMotor lM, DCMotor rM, DistanceSensor s) throws Exception 
 	{
+		boolean completion = false;
+		
         while(counter != 23) // abt a meter
         {
-        	lM.setTargetVelocity(0.5);
-            rM.setTargetVelocity(0.5);
+        	lM.setTargetVelocity(0.6);
+            rM.setTargetVelocity(0.6);
             counter++;
             Thread.sleep(100);
             
@@ -118,25 +132,34 @@ public class Square {
         if(counter == 23)
         {
         	//Turn in one direction
-            lM.setTargetVelocity(1);
-            rM.setTargetVelocity(-0.8);
+            lM.setTargetVelocity(0.9);
+            rM.setTargetVelocity(-1);
 
             Thread.sleep(810); // 90 degree turn roughly
-            /*
-            lM.setTargetVelocity(0);
-            rM.setTargetVelocity(0);
-            Thread.sleep(1000);
-            */
+
             counter = 0;
+            completion = true;
 
         }
                 
-        return;
+        return completion;
 
 	}
 	
 	private static void turnAround(DCMotor lM, DCMotor rM, DistanceSensor s) throws Exception 
 	{
+		
+		counter = 23 - counter; 
+    	
+    	lM.setTargetVelocity(-1);
+        rM.setTargetVelocity(1);
+
+        //Thread.sleep(1200); 1200 only good if stop and rotate
+        Thread.sleep(800);
+    	
+    	turnCounter ++;
+		
+		/*
 		if (s.getDistance() < 200) 
         {
         	counter = 23 - counter; 
@@ -152,6 +175,7 @@ public class Square {
 		{
 			return;
 		}
+		*/
 	}
 	
 	private static void oneSecStop(DCMotor lM, DCMotor rM) throws Exception
@@ -159,7 +183,7 @@ public class Square {
 		lM.setTargetVelocity(0);
         rM.setTargetVelocity(0);
 
-        Thread.sleep(100);
+        Thread.sleep(1000);
 		return;
 	}
 	

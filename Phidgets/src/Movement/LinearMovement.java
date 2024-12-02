@@ -5,7 +5,7 @@ import com.phidget22.*;
 public class LinearMovement {
 
 	public static void main(String[] args) throws Exception {
-	{
+	
 		
 		 //Connect to wireless rover
         Net.addServer("", "192.168.100.1", 5661, "", 0);
@@ -22,7 +22,8 @@ public class LinearMovement {
         leftMotors.open(5000);
         rightMotors.open(5000);
 
-        //Move forward at full speed
+        //Move forward
+
         leftMotors.setTargetVelocity(.5);
         rightMotors.setTargetVelocity(.5);
 
@@ -33,9 +34,7 @@ public class LinearMovement {
         leftMotors.setTargetVelocity(0);
         rightMotors.setTargetVelocity(0);
         
-        //Velocity and sleep seem to be proportional in distance travelled 
-        //v0.5 and sleep 2000 travels same distance as v1 and sleep 1000
-    }
+    
 
 	}
 

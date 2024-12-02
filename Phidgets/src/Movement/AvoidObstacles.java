@@ -31,8 +31,8 @@ public class AvoidObstacles {
             
             if (sonar.getDistance() < 200) {
                 //Object detected! Stop motors
-                leftMotors.setTargetVelocity(-0.5);
-                rightMotors.setTargetVelocity(-0.5);
+                leftMotors.setTargetVelocity(0);
+                rightMotors.setTargetVelocity(0);
             } else {
                 //Move forward slowly (25% max speed)
                 leftMotors.setTargetVelocity(0.5);

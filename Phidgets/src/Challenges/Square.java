@@ -1,5 +1,19 @@
 package Challenges;
 
+/*
+
+Program: Square.java          Last Date of this Revision: December 3, 2024
+
+Purpose: An application that moves the rover around in a square. 
+If an object is detected it will turn around and go in a square the opposite way.
+
+Author: William Merryfield 
+School: CHHS
+Course: CSE3910 - Project D
+ 
+
+*/
+
 //Add Phidgets Library
 import com.phidget22.*;
 
@@ -33,9 +47,9 @@ public class Square {
         //overrotates when more than 1 turn ex going to two sides of a square
         // prolly due to wheel accel
         // change turn or make it stop
-        //turnAround(leftMotors, rightMotors, sonar);
+        //turnAround(leftMotors, rightMotors);
         
-        while(x != 3)
+        while(x != 10)
         {     	
 
         	oneSecStop(leftMotors, rightMotors);
@@ -45,9 +59,9 @@ public class Square {
         	{
         		normDirection(leftMotors, rightMotors, sonar);
         		
-        		if (!normDirection(leftMotors, rightMotors, sonar))
+        		if (sonar.getDistance() < 200)
         		{
-        			turnAround(leftMotors, rightMotors, sonar);
+        			turnAround(leftMotors, rightMotors);
         		}
         		
         		//oneSecStop(leftMotors, rightMotors);
@@ -57,9 +71,9 @@ public class Square {
         	{
         		revDirection(leftMotors, rightMotors, sonar);
         		
-        		if (!revDirection(leftMotors, rightMotors, sonar))
+        		if (sonar.getDistance() < 200)
         		{
-        			turnAround(leftMotors, rightMotors, sonar);
+        			turnAround(leftMotors, rightMotors);
         		}
         		
         		//oneSecStop(leftMotors, rightMotors);
@@ -81,8 +95,8 @@ public class Square {
 		
         while(counter != 23) // abt a meter
         {
-        	lM.setTargetVelocity(0.6);
-            rM.setTargetVelocity(0.6);
+        	lM.setTargetVelocity(0.45);
+            rM.setTargetVelocity(0.45);
             counter++;
             Thread.sleep(100);
             
@@ -95,10 +109,10 @@ public class Square {
         if(counter == 23)
         {
         	//Turn in one direction
-            lM.setTargetVelocity(-1);
-            rM.setTargetVelocity(0.9);
+            lM.setTargetVelocity(-0.9);
+            rM.setTargetVelocity(0.8);
 
-            Thread.sleep(810); // 90 degree turn roughly
+            Thread.sleep(600); // 90 degree turn roughly // was 810 before
             counter = 0;
             completion = true;
 
@@ -118,8 +132,8 @@ public class Square {
 		
         while(counter != 23) // abt a meter
         {
-        	lM.setTargetVelocity(0.6);
-            rM.setTargetVelocity(0.6);
+        	lM.setTargetVelocity(0.45);
+            rM.setTargetVelocity(0.45);
             counter++;
             Thread.sleep(100);
             
@@ -132,10 +146,10 @@ public class Square {
         if(counter == 23)
         {
         	//Turn in one direction
-            lM.setTargetVelocity(0.9);
-            rM.setTargetVelocity(-1);
+            lM.setTargetVelocity(0.8);
+            rM.setTargetVelocity(-0.9);
 
-            Thread.sleep(810); // 90 degree turn roughly
+            Thread.sleep(600); // 90 degree turn roughly // was 810 before
 
             counter = 0;
             completion = true;
@@ -146,7 +160,7 @@ public class Square {
 
 	}
 	
-	private static void turnAround(DCMotor lM, DCMotor rM, DistanceSensor s) throws Exception 
+	private static void turnAround(DCMotor lM, DCMotor rM) throws Exception 
 	{
 		
 		counter = 23 - counter; 
@@ -155,7 +169,7 @@ public class Square {
         rM.setTargetVelocity(1);
 
         //Thread.sleep(1200); 1200 only good if stop and rotate
-        Thread.sleep(800);
+        Thread.sleep(710);
     	
     	turnCounter ++;
 		

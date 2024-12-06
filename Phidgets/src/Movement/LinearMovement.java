@@ -18,9 +18,9 @@ import com.phidget22.*;
 
 public class LinearMovement {
 
-	public static void main(String[] args) throws Exception {
-	
-		
+	public static void main(String[] args) throws Exception 
+	{
+			
 		// Connect to wireless rover
         Net.addServer("", "192.168.100.1", 5661, "", 0);
 
